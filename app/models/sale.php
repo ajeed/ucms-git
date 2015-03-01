@@ -54,11 +54,11 @@ class Sale extends AppModel {
 	 */
 	public function getSalesRepByType($month=null,$year=null) {
 		$dt = new DateTime();
-		$int = ($month === null && !empty($year)) ? "+1 years" : "+1 months"; 
+		$int = ($month == null && !empty($year)) ? "+1 years" : "+1 months"; 
 		
 		
-		$month = ($month === null) ? $dt->format('m') : $month;
-		$year = ($year === null) ? $dt->format('Y') : $year;
+		$month = ($month == null) ? $dt->format('m') : $month;
+		$year = ($year == null) ? $dt->format('Y') : $year;
 		$dt->setDate($year, $month, 1); //Get 1st date of given month given year
 		
 		$types = $this->Salestype->find('list');
@@ -73,9 +73,11 @@ class Sale extends AppModel {
 
 		$last = $dt->modify($int);
 		$last = $dt->format('Y-m-d');
-		
+
 		//20140903 - Bai request instead of created date, set deliver_date
 		$conditions = array('Sale.deliver_date >=' => $first, 'Sale.deliver_date <' => $last);
+		print_r($conditions);
+		exit;
 		foreach($types as $id=>$type) {
 			$conditions['Sale.salestype_id'] = $id;
 			$rep[$type] = $this->find('count',array('conditions'=>$conditions));
@@ -103,7 +105,7 @@ class Sale extends AppModel {
 
 	public function getSalesByRangeDate ($dtFrom,$dtTo) {
 		$conditions = array('Sale.deliver_date >=' => $dtFrom,'Sale.deliver_date <' => $dtTo);
-		return($this->find('Sales',array('conditions'=>$conditions)));
+		return($this->find('all',array('conditions'=>$conditions)));
 	}
 }
 ?>

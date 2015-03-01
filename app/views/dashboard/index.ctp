@@ -18,7 +18,7 @@
 		<!--  start announcement -->
 		<div class="announcement">
 			<li>
-				Total available  : <b><?php echo $this->Html->link($cntAvailable,array("controller"=>stores,"action"=>"index","available"));?></b>
+				Total available  : <b><?php echo $this->Html->link($cntAvailable,array("controller"=>'Stores',"action"=>"index","available"));?></b>
 			</li>
 			<li>
 				Total sales (monthly)  : <b><?php echo $cntSalesMonthly;?></b>
