@@ -1,0 +1,324 @@
+<style>
+<!--
+.view table {
+	border-collapse: collapse;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", verdana, lucida, helvetica, sans-serif;
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0;
+}
+
+.view th,.view td {
+	border-bottom: 1px solid #666;
+	border-top: 1px solid #666;
+	padding: 0.6em;
+	vertical-align: 4px;
+}
+
+.view th {
+	text-align: left;
+	text-transform: uppercase;
+	padding-left: 10px;
+}
+.view thead th, .view tfoot th, .view tfoot td {
+	background-color: #cc9;
+	font-size: 1.1em;
+}
+
+.view tbody th,.view td {
+	background-color:#eee;
+}
+.view tbody tr:hover td,.view tbody tr:hover th {
+	background-color: #E5E5CB;
+}
+.view tr.odd td,.view tr.odd th {
+	background-color: #ddd;
+}
+.view tbody a {
+	color: #333;
+}
+.view tbody a:visited {
+	color: #999999;
+}
+.view tbody a:hover {
+	color: #33c;
+}
+.view tbody a:active {
+	color: #33c;
+}
+.view tbody td+td+td+td a {
+	padding-right: 12px;
+}
+.view tfoot th {
+	text-align: right;
+}
+.view tfoot th:after {
+	content: ":";
+}
+-->
+</style>
+	<table border="0" width="100%" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+	<td width="600">
+	<!--  start related-activities -->
+	<?php 
+	if($store['Store']['image'] == '' || $store['Store']['image'] == null) {
+			$image = 'no_photo.jpg';
+	}
+	else {
+		$image = 'car/'.$store['Store']['image'];
+	}
+	?>
+		<?php echo $this->Html->image($image,array('width'=>600))?>
+	<!-- end related-activities -->
+	</td>
+	<td>
+
+
+		<!-- start id-form -->
+		<table width="100%" border="0" cellpadding="0" cellspacing="0"  class="view">
+		<tr>
+                    <th colspan="3" valign="top" style="text-align:center">Car Information</th>
+		</tr>
+		<tr>
+                    <th valign="top">Registration No:</th>
+                    <td>
+                        <?php echo $store['Store']['reg_no']; ?>
+                        </td>
+                    <td></td>
+		</tr>
+                <tr>
+		<th valign="top">Make:</th>
+		<td>
+			<?php echo strtoupper($store['Make']['name']); ?>
+		</td>
+		<td></td>
+		</tr>
+		        <tr>
+		<th valign="top">Model:</th>
+		<td>
+			<?php echo strtoupper($store['Mod']['name']); ?>
+		</td>
+		<td></td>
+		</tr>
+		<tr>
+			<th valign="top">Year made:</th>
+				<td>
+					<?php echo $store['Store']['year_of_made']; ?>
+             	</td>
+			<td>
+			<!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div-->
+			</td>
+		</tr>
+                <tr>
+			<th valign="top">Year register:</th>
+			<td>
+                     <?php echo $store['Store']['year_of_reg']; ?>
+                        </td>
+			<td>
+			<!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div-->
+			</td>
+		</tr>
+                 <tr>
+			<th valign="top">Owner name : </th>
+			<td>
+			<?php echo $store['Store']['seller_name']; ?>
+                        </td>
+			<td>
+			<!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div-->
+			</td>
+		</tr>
+                <tr>
+			<th valign="top">Owner phone no : </th>
+			<td>
+			<?php echo $store['Store']['seller_tel']; ?>
+                        </td>
+			<td>
+			<!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div-->
+			</td>
+		</tr>
+		      <tr>
+			<th valign="top">Owner IC / Passport : </th>
+			<td>
+			<?php echo $store['Store']['seller_ic']; ?>
+                        </td>
+			<td>
+			<!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div-->
+			</td>
+		</tr>
+                 <tr>
+			<th valign="top">Broker name : </th>
+			<td>
+			<?php echo $store['Store']['broker_name']; ?>
+                        </td>
+			<td>
+			<!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div-->
+			</td>
+		</tr>
+                <tr>
+			<th valign="top">Broker phone no : </th>
+			<td>
+			<?php echo $store['Store']['broker_tel']; ?>
+                        </td>
+			<td>
+			<!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div-->
+			</td>
+		</tr>
+                <tr>
+			<th valign="top">Walk-in : </th>
+			<td>
+			<?php echo ($store['Store']['walk_in']) ? "Yes" : "No" ?>
+                        </td>
+			<td>
+			<!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div-->
+			</td>
+		</tr>
+                <tr>
+			<th valign="top">Price (MYR):</th>
+			<td>
+			<?php echo $this->Number->format($store['Store']['price']); ?>
+			</td>
+			<td></td>
+		</tr>
+
+                 <tr>
+		<th valign="top">Date purchased:</th>
+		<td>
+			<?php echo $store['Store']['date']; ?>
+		</td>
+		<td></td>
+		<tr>
+	<tr>
+		<th valign="top">Description:</th>
+		<td>
+             <?php echo $store['Store']['remarks']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>&nbsp;</th>
+		<td valign="top">
+		<?php 
+		if($store['Document']['Document']['incomplete'] != null) :?>
+		<span class="red">DOCUMENT IS NOT COMPLETED</span>
+		<br />
+		<?php 
+		foreach($store['Document']['Document']['incomplete'] as $doc):
+		?>
+		<li> <?php echo $doc;?></li>
+		<?php endforeach;?>
+		<?php else:?>
+		DOCUMENT IS COMPLETE
+		<?php endif;?>
+		</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top" colspan="3"><?php echo $this->Html->link('>>Edit Car Information',array('action'=>'edit',$store['Store']['id']))?></th>
+	</tr>
+	
+	<?php if($sale) :?>
+	<!--##################################  SALE PORTION #####################################-->	
+	
+	<tr>
+         <th colspan="3" valign="top" style="text-align:center">Sales information</th>
+	</tr>
+	<tr>
+		<th valign="top">Selling price:</th>
+		<td>
+             <?php echo $this->Number->format($sale['Sale']['price'],array('places'=>2,'before'=>'MYR')); ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Delivered Date:</th>
+		<td>
+             <?php echo $sale['Sale']['deliver_date']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Buyer Name:</th>
+		<td>
+             <?php echo $sale['Sale']['buyer_name']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Buyer Contact No:</th>
+		<td>
+             <?php echo $sale['Sale']['buyer_tel']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Buyer IC:</th>
+		<td>
+             <?php echo $sale['Sale']['buyer_ic']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Broker Name:</th>
+		<td>
+             <?php echo $sale['Sale']['broker_name']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Broker Contact No:</th>
+		<td>
+             <?php echo $sale['Sale']['broker_tel']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Sales Type:</th>
+		<td>
+             <?php echo $sale['Salestype']['name']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Insurance:</th>
+		<td>
+             <?php echo $sale['Sale']['insurance']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top">Remarks:</th>
+		<td>
+             <?php echo $sale['Sale']['remarks']; ?>
+                </td>
+		<td></td>
+	</tr>
+	<tr>
+		<th valign="top" colspan="3"><?php echo $this->Html->link('>>Edit Sales Information',array('controller'=>'sales','action'=>'edit',$store['Sale'][0]['id']))?></th>
+	</tr>
+	<?php endif;?>
+	
+	</table>
+
+	<!-- end id-form  -->
+
+	</td>
+</tr>
+<tr>
+<td>
+    <?php echo $html->image('shared/blank.gif',array('width'=>"695",'height'=>"1",'alt'=>"blank")) ?>
+</td>
+<td></td>
+</tr>
+</table>
+
+<div class="clear"></div>
+
