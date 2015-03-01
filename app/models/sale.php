@@ -92,5 +92,18 @@ class Sale extends AppModel {
 		$conditions = array('stores_id'=>$store_id);
 		return($this->find('count',array('conditions'=>$conditions)));
 	}
+
+	/**
+	* Get sales object by date range
+	* @param date $dtFrom
+	* @param date $dtTo
+	* @return Sale Sales
+	*
+	*/
+
+	public function getSalesByRangeDate ($dtFrom,$dtTo) {
+		$conditions = array('Sale.deliver_date >=' => $dtFrom,'Sale.deliver_date <' => $dtTo);
+		return($this->find('Sales',array('conditions'=>$conditions)));
+	}
 }
 ?>

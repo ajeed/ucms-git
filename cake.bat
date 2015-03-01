@@ -2,8 +2,8 @@
 @echo off
 
 SET app=%0
-SET lib=c:\xampp\htdocs\ucms\cake\console\
+SET lib=C:\dev\xampp1.7\htdocs\ucms\cake\console\
 
-c:\xampp\php\php.exe -q "%lib%cake.php" -working %CD% %*
+C:\dev\xampp1.7\php\php.exe -q "%lib%cake.php" -working %CD% %*
 
 echo.
