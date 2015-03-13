@@ -4,6 +4,7 @@
 	foreach ($contents as $content) :
 echo "<tr>";
 echo "<td>";
+echo "Delivery Date: " . $content['deliverydate'] ."</br>";
 echo "<h2>Sending to</h2>" . $content['phonenumber'];
 echo "<br />";
 echo "<h2>Message : </h2>" . $content['msg'];

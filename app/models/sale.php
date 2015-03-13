@@ -76,8 +76,6 @@ class Sale extends AppModel {
 
 		//20140903 - Bai request instead of created date, set deliver_date
 		$conditions = array('Sale.deliver_date >=' => $first, 'Sale.deliver_date <' => $last);
-		print_r($conditions);
-		exit;
 		foreach($types as $id=>$type) {
 			$conditions['Sale.salestype_id'] = $id;
 			$rep[$type] = $this->find('count',array('conditions'=>$conditions));

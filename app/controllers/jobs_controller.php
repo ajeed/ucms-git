@@ -10,30 +10,45 @@
           function smsBlast() {
 
             $Sale = ClassRegistry::init('Sale');
+            $Common = ClassRegistry::init('Common');
             $todays_date = new DateTime();
-            $dtFrom = $todays_date->modify("-13 months");
-            $strDtFrom = $dtFrom->format('Y-m-d');
-            $dtTo = $dtFrom->modify("+1 weeks");
+            $calc_date = $todays_date;
+            $thisMonth = $calc_date->format('m');
+            $thisDay = $calc_date->format('d');
 
-            //List all sales where 
-            // Deliver month - 1
-            // Year - 1
            
-            $strDtTo = $dtTo->format('Y-m-d');
-
-
-            $listRcpt = $Sale->getSalesByRangeDate($strDtFrom,$strDtTo);
             
+            
+            $startYear = 2012;
+
+
+            while ($startYear != $todays_date->format('Y')) {
+              
+              //Set the start date
+              $startDate = $toDate = new DateTime();
+              $strDtTo = $toDate->setDate($startYear,$thisMonth,$thisDay)->format('Y-m-d');
+
+              $strDtFrom = $startDate->setDate($startYear,$thisMonth,$thisDay)->modify("-1 weeks")->format('Y-m-d');
+              $listRcpt[$startYear] = $Sale->getSalesByRangeDate($strDtFrom,$strDtTo);
+              
+              $startYear++;
+
+            }
+                       
            $campaigns = array();
             $contents = array ();
             if($listRcpt != null) {
-              foreach($listRcpt as $rcpt) {
+              foreach($listRcpt as $years){
+                foreach($years as $rcpt) {
                 if($rcpt['Sale']['buyer_tel'] != null OR $rcpt['Sale']['buyer_tel'] != "") {
                   $contents['msg'] = $this->content($rcpt['Store']['reg_no']);
                   $contents['phonenumber'] = $rcpt['Sale']['buyer_tel'];
-                  $contents['deliverydate'] = 
+                  $contents['deliverydate'] = $rcpt['Sale']['deliver_date'];
+                  pr($contents);
                   array_push($campaigns, $contents);
                 }
+              }
+
               }
             }
 
