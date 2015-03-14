@@ -3,12 +3,14 @@
 
           var $name = 'Jobs';
           var $uses = array();
+      
           
           function beforeRender() {
           }
           
           function smsBlast() {
-
+           
+            
             $Sale = ClassRegistry::init('Sale');
             $Common = ClassRegistry::init('Common');
             $todays_date = new DateTime();
@@ -59,13 +61,16 @@
 
           private function content ($platNumber) {
 
-            $strContent = $platNumber.'-Insuran anda hampir tamat tempoh.Sila kunjungi atau hubungi SilverSpeed utk proses pembaharuan 03-89223958/0123761140.Beroperasi 7 hari seminggu';
+            $strContent = $platNumber.'-Insuran anda hampir tamat tempoh.Sila kunjungi atau hubungi SilverSpeed utk proses pembaharuan di 03-87361140/012-3761140.Beroperasi 7 hari seminggu';
 
              return($strContent);
           }
 
           function test() {
-            smsBlast();
+            App::import('Component','Sms');
+            $this->Sms=& new SmsComponent(null);
+           $test =  $this->Sms->postSms('0133889270','WPL982-Insuran anda hampir tamat tempoh.Sila kunjungi atau hubungi SilverSpeed utk proses pembaharuan 03-89223958/0123761140.Beroperasi 7 hari seminggu');
+
           }
 
           function constructMsg($listRcpt) {

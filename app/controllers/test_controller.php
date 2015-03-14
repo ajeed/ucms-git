@@ -60,7 +60,7 @@ class TestController extends AppController {
 		
 		/* Check for SMTP errors. */
 		$this->Email->from = 'No-Reply <no-reply@afha.com.my>';
-		$this->Email->to = 'Somebody Else <dejagothic@gmail.com>';
+		$this->Email->to = 'Somebody Else <hafidzi@gmail.com>';
 		$this->Email->subject = 'Test';
 		$this->Email->template = 'test';
 		$this->Email->sendAs = 'text';
