@@ -116,6 +116,55 @@
     <td class="alt" colspan="3"><?php echo $sale['Sale']['remarks']; ?>&nbsp;</td>
   </tr>
 </tbody></table>
+
+<!--Sales Details information -->
+<br />
+<table align="center" cellspacing="0" id="mytable">
+  <tbody><tr>
+    <th colspan="5" scope="col" class="main"><div align="center">SALES DETAILS&nbsp;
+     <?php 
+          echo $this->Html->link($this->Html->image("edit.png",array('height'=>15,'width'=>15)),array('controller'=>'saleDtls','action'=>'edit',$store['Sale'][0]['id']), array('escape' => false));
+      ?> 
+        </div></th>
+  </tr>
+  <tr>
+    <td width="10%" class="specalt" scope="row">NO&nbsp;</td>
+    <td width="45%" class="specalt" scope="row">ITEMS&nbsp;</td>
+    <td width="15%" class="specalt" scope="row">PRICE PER UNIT (RM)&nbsp;</td>
+    <td width="15%" class="specalt" scope="row">UNIT</td>
+    <td width="15%" class="specalt" scope="row">TOTAL PRICE&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="spec">1.</td>
+    <td class="specrow" scope="row">[ITEMS 1]&nbsp;</td>
+    <td class="specrow">RM300.00&nbsp;</td>
+    <td class="specrow">1</td>
+    <td class="specrow">RM300.00</td>
+  </tr>
+  <tr>
+    <td class="spec">2.</td>
+    <td class="specrow" scope="row">[ITEMS 2]&nbsp;</td>
+    <td class="specrow">RM80.00&nbsp;</td>
+    <td class="specrow">1</td>
+    <td class="specrow">RM80.00</td>
+  </tr>
+  <tr>
+    <td class="spec">3.</td>
+    <td class="specrow" scope="row">[ITEMS 3]&nbsp;</td>
+    <td class="specrow">RM110.00&nbsp;</td>
+    <td class="specrow">1</td>
+    <td class="specrow">RM110.00</td>
+  </tr>
+  <tr colspan="5" scope="col" class="main"><div align="center">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td class="spec"><b><u>RM490.00</u></b></td>
+  </tr>
+</tbody></table>
+
+
 <?php endif;?>
 	<table border="0" width="100%" cellpadding="0" cellspacing="0">
 	<tr valign="top">

@@ -20,6 +20,22 @@ class Sale extends AppModel {
 			'order' => ''
 		)
 	);
+
+	var $hasMany = array(
+		'SaleDtl' => array(
+			'className' => 'SaleDtl',
+			'foreignKey' => 'sales_id',
+			'dependent' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+	);
 	
 	function afterSave($created) {
 		if($created === true) {

@@ -204,7 +204,7 @@ endif;?>
 		<div id="nav-right">
 
 			<div class="nav-divider">&nbsp;</div>
-			<div class="showhide-account"><img src="img/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
+			<div class="showhide-account"><?=$this->Html->image('shared/nav/nav_myaccount.gif',array('width'=>93,'height'=>14))?></div>
 			<div class="nav-divider">&nbsp;</div>
 			<?php echo $this->Html->link($this->Html->image('shared/nav/nav_logout.gif'),array('controller'=>'users','action'=>'logout'),array('escape'=>false,'width'=>64,'height'=>14,'id'=>'logout'));?>
 			<div class="clear">&nbsp;</div>
@@ -280,6 +280,21 @@ endif;?>
 		<div class="nav-divider">&nbsp;</div>
 
 		<ul class="<?php echo($title_for_layout == 'Report') ? "current" : "select" ?>"><li><a href="<?php echo $this->base . "/reports/"?>"><b>Reports</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		<!--[if lte IE 6]><table><tr><td><![endif]-->
+		<!-- div class="select_sub">
+			<ul class="sub">
+				<li><a href="#nogo">Dashboard Details 1</a></li>
+				<li><a href="#nogo">Dashboard Details 2</a></li>
+				<li><a href="#nogo">Dashboard Details 3</a></li>
+			</ul>
+		</div-->
+		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+		</li>
+		</ul>
+
+		<div class="nav-divider">&nbsp;</div>
+
+		<ul class="<?php echo($title_for_layout == 'Cash Flow') ? "current" : "select" ?>"><li><a href="<?php echo $this->base . "/vouchers/"?>"><b>Cash Flow</b><!--[if IE 7]><!--></a><!--<![endif]-->
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<!-- div class="select_sub">
 			<ul class="sub">

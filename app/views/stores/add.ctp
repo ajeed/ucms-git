@@ -151,6 +151,18 @@ $(document).ready(function(){
 			</tr>
 
 			<tr>
+				<th valign="top">Chasis No:</th>
+				<td><?php echo $this->Form->input('chasis_no',array('label' => false,'class'=>"inp-form")); ?></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<th valign="top">Engine No:</th>
+				<td><?php echo $this->Form->input('engine_no',array('label' => false,'class'=>"inp-form")); ?></td>
+				<td></td>
+			</tr>
+
+			<tr>
 				<th valign="top">Select a date:</th>
 				<td class="noheight">
 				<table border="0" cellpadding="0" cellspacing="0">
