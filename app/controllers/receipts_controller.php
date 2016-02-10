@@ -4,7 +4,7 @@ class ReceiptsController extends AppController {
 	var $name = 'Receipts';
 
 	function index() {
-		$this->Receipt->recursive = 0;
+		$this->Receipt->recursive = 1;
 		$this->set('receipts', $this->paginate());
 	}
 

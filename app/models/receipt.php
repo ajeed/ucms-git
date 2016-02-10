@@ -12,11 +12,11 @@ class Receipt extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Stores' => array(
-			'className' => 'Stores',
+		'Store' => array(
+			'className' => 'Store',
 			'foreignKey' => 'stores_id',
 			'conditions' => '',
-			'fields' => '',
+			'fields' => array('Store.id','Store.reg_no'),
 			'order' => ''
 		)
 	);
