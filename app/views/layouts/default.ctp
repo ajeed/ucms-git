@@ -294,20 +294,20 @@ endif;?>
 
 		<div class="nav-divider">&nbsp;</div>
 
-		<ul class="<?php echo($title_for_layout == 'Cash Flow') ? "current" : "select" ?>"><li><a href="<?php echo $this->base . "/vouchers/"?>"><b>Cash Flow</b><!--[if IE 7]><!--></a><!--<![endif]-->
-		<!--[if lte IE 6]><table><tr><td><![endif]-->
-		<!-- div class="select_sub">
-			<ul class="sub">
-				<li><a href="#nogo">Dashboard Details 1</a></li>
-				<li><a href="#nogo">Dashboard Details 2</a></li>
-				<li><a href="#nogo">Dashboard Details 3</a></li>
-			</ul>
-		</div-->
+		<!-- Start of Cash Flow -->
+		<ul class="<?php echo($title_for_layout == 'Store') ? "current" : "select" ?>"><li><a href="#nogo"><b>Cash Flow</b><!--[if IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<div class="select_sub show">
+					<ul class="sub">
+						<li><?php echo $this->Html->link("Vouchers",array('controller'=>'vouchers','action'=>'index','available'))?></li>
+						<li><?php echo $this->Html->link("Receipt",array('controller'=>'receipts','action'=>'index'))?></li>
+					</ul>
+				</div>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 		</ul>
 
-
+		<!-- End of Cash Flow -->
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>

@@ -13,17 +13,17 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Stores'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($receipt['Stores']['title'], array('controller' => 'stores', 'action' => 'view', $receipt['Stores']['id'])); ?>
+			<?php echo $this->Html->link($receipt['Store']['title'], array('controller' => 'stores', 'action' => 'view', $receipt['Store']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Issuance'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Receipient'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $receipt['Receipt']['issuance']; ?>
+			<?php echo $receipt['Receipt']['receipient']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Issuance Date'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Receipt Date'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $receipt['Receipt']['issuance_date']; ?>
+			<?php echo $receipt['Receipt']['receipt_date']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Remarks'); ?></dt>
