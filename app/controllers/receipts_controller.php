@@ -26,7 +26,7 @@ class ReceiptsController extends AppController {
 				$this->Session->setFlash(__('The receipt could not be saved. Please, try again.', true));
 			}
 		}
-		$lookups = $this->Receipt->Lookup->find('list');
+		$lookups = $this->Receipt->Lookup->find('list',array('conditions' => array('type' => 'receipt')));
 		$stores = $this->Receipt->Store->find('list');
 		$this->set(compact('lookups', 'stores'));
 	}
@@ -47,7 +47,7 @@ class ReceiptsController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Receipt->read(null, $id);
 		}
-		$lookups = $this->Receipt->Lookup->find('list');
+		$lookups = $this->Receipt->Lookup->find('list',array('conditions' => array('type' => 'receipt')));
 		$stores = $this->Receipt->Store->find('list');
 		$this->set(compact('lookups', 'stores'));
 	}

@@ -47,7 +47,7 @@ class VouchersController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Voucher->read(null, $id);
 		}
-		$lookups = $this->Voucher->Lookup->find('list');
+		$lookups = $this->Voucher->Lookup->find('list',array('conditions' => array('type' => 'voucher')));
 		$stores = $this->Voucher->Store->find('list');
 		$this->set(compact('lookups', 'stores'));
 	}
