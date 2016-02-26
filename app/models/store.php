@@ -61,6 +61,19 @@ class Store extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
+		'PurchaseCost' => array(
+			'className' => 'PurchaseCost',
+			'foreignKey' => 'store_id',
+			'dependent' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 	);
 	
 	

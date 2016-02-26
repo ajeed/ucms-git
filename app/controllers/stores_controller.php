@@ -44,7 +44,13 @@ class StoresController extends AppController {
 		$this->set('store', $store);
 		$this->Store->Sale->recursive = 1;
 		$sale = $this->Store->Sale->find('first',array('conditions'=>array('Sale.stores_id'=>$id)));
-		$this->set(compact('sale'));
+		$this->Store->PurchaseCost->recursive = 0;
+		$purchaseCosts = $this->Store->PurchaseCost->find('all',array(
+			'conditions'=>array('PurchaseCost.store_id'=>$id),
+			//'fields'=>array('PurchaseCost.lookup_id','SUM(`PurchaseCost`.`amount`) as `amount`'),
+			//'group'=>'PurchaseCost.lookup_id',
+			));
+		$this->set(compact('sale','purchaseCosts'));
 	}
 	
 
