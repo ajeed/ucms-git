@@ -100,7 +100,7 @@ $amount += $cost['PurchaseCost']['amount'];
 
   <tr>
     <td class="spec"><?=$i?></td>
-    <td class="specrow" scope="row"><?=$cost['Lookup']['value']?></td>
+    <td class="specrow" scope="row"><?=$cost['Lookup']['value']?> - <?= $cost['PurchaseCost']['remarks']?></td>
     <td class="specrow"><?=$cost['PurchaseCost']['receipt_no']?></td>
     <td class="specrow"><?=$this->Number->format($cost['PurchaseCost']['amount'],array('places'=>2,'before'=>'MYR')); ?></td>
   </tr>
