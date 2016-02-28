@@ -50,7 +50,8 @@ class StoresController extends AppController {
 			//'fields'=>array('PurchaseCost.lookup_id','SUM(`PurchaseCost`.`amount`) as `amount`'),
 			//'group'=>'PurchaseCost.lookup_id',
 			));
-		$this->set(compact('sale','purchaseCosts'));
+		$purchaseCostsAmt = $this->Store->PurchaseCost->getTotalCostAmount($id);
+		$this->set(compact('sale','purchaseCosts','purchaseCostsAmt'));
 	}
 	
 

@@ -20,5 +20,16 @@ class PurchaseCost extends AppModel {
 			'order' => ''
 		)
 	);
+
+	public function getTotalCostAmount($store_id){
+		 $sum = $this->find('first', array(
+    'conditions' =>array('store_id'=>$store_id),
+    'fields' => array('sum(amount) as total_sum'
+            )
+        )
+    );
+		  return $sum[0];
+            
+	}
 }
 ?>
