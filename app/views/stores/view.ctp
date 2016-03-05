@@ -97,6 +97,7 @@
     <th width="45%" class="main" scope="row">ITEMS&nbsp;</th>
     <th width="15%" class="main" scope="row">RECEIPT NO&nbsp;</th>
     <th width="15%" class="main" scope="row">TOTAL PRICE&nbsp;</th>
+    <th width="15%" class="main" scope="row">ACTION&nbsp;</th>
   </tr>
     <?php
     $i = 0;
@@ -112,6 +113,11 @@ $amount += $cost['PurchaseCost']['amount'];
     <?php echo ($cost['PurchaseCost']['remarks'] == "") ? "" : "- ".$cost['PurchaseCost']['remarks'] ?></td>
     <td class=<?php echo ($i%2 == 1)?'"specrow"' : '"alt"'?>><?=$cost['PurchaseCost']['receipt_no']?></td>
     <td class=<?php echo ($i%2 == 1)?'"specrow"' : '"alt"'?>><?=$this->Number->format($cost['PurchaseCost']['amount'],array('places'=>2,'before'=>'MYR')); ?></td>
+    <td class=<?php echo ($i%2 == 1)?'"specrow"' : '"alt"'?>>
+    <?php echo $this->Html->link(__('', true), array('controller'=>'purchaseCosts','action' => 'edit', $cost['PurchaseCost']['id']),array('class'=>'icon-1 info-tooltip')); ?>
+      <?php echo $this->Html->link(__('', true), array('controller'=>'purchaseCosts','action' => 'delete', $cost['PurchaseCost']['id']),array('class'=>'icon-2 info-tooltip'), sprintf(__('Are you sure you want to delete # %s?', true), $store['Store']['reg_no'])); ?>
+    </td>
+    </td>
   </tr>
   <?php endforeach; ?>
   <tr colspan="5" scope="col" class="main"><div align="center">
