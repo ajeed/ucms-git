@@ -20,5 +20,19 @@ class PurchaseCost extends AppModel {
 			'order' => ''
 		)
 	);
+
+	function getTotalCostByStoreID ($store_id,$lookups = array()) {
+		$totalCost = 0;
+		$conditions = array('store_id'=>$store_id);
+		if(empty($lookups)) {
+			$conditions = array('store_id'=>$store_id);
+		}
+
+		$totalCost = $this->find('first',array(
+			'conditions'=>$conditions,
+			'fields'=>'SUM(amount) as AMT'));
+			
+		return $totalCost[0]['AMT'];
+	}
 }
 ?>

@@ -270,7 +270,7 @@ endif;?>
 		<!--[if lte IE 6]><table><tr><td><![endif]-->
 		<div class="select_sub">
 			<ul class="sub">
-				<li><?php echo $this->Html->link("Sales Details",array('controller'=>'sales','action'=>'index'))?></li>
+				<li><?php echo $this->Html->link("Sales Details",array('controller'=>'sales','action'=>'saleDetails'))?></li>
 			</ul>
 		</div>
 		<!--[if lte IE 6]></td></tr></table></a><![endif]-->
