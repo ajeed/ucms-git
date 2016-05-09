@@ -232,6 +232,7 @@ $(document).ready(function(){
 			<li style="padding-bottom: 4px;"> <?php echo $this->Form->checkbox('Document.0.grant_ori',array('label' => false,'class'=>"ui-helper-hidden-accessible")); ?> Geran Original</li>
 			<li style="padding-bottom: 4px;"> <?php echo $this->Form->checkbox('Document.0.seller_ic',array('label' => false,'class'=>"ui-helper-hidden-accessible")); ?> Owner IC copy</li>
 			<li style="padding-bottom: 4px;"> <?php echo $this->Form->checkbox('Document.0.auth_letter',array('label' => false,'class'=>"ui-helper-hidden-accessible")); ?> Authorize letter</li>
+			<li style="padding-bottom: 4px;"> <?php echo $this->Form->checkbox('Document.0.stms',array('label' => false,'class'=>"ui-helper-hidden-accessible")); ?> STMS</li>
 			<li style="padding-bottom: 4px;">Remarks : <br />  
 						<?php echo $this->Form->textarea('Document.0.remarks',array('label' => false,'class'=>"","rows"=>2,"cols"=>20)); ?></li>
 		</ul>

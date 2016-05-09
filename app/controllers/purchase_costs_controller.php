@@ -40,9 +40,10 @@ class PurchaseCostsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			$item = $this->PurchaseCost->findById($id);
 			if ($this->PurchaseCost->save($this->data)) {
 				$this->Session->setFlash(__('The purchase cost has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('controller'=>'stores','action' => 'view',$item['Store']['id']));
 			} else {
 				$this->Session->setFlash(__('The purchase cost could not be saved. Please, try again.', true));
 			}
@@ -60,12 +61,14 @@ class PurchaseCostsController extends AppController {
 			$this->Session->setFlash(__('Invalid id for purchase cost', true));
 			$this->redirect(array('action'=>'index'));
 		}
+		$item = $this->PurchaseCost->findById($id);
+
 		if ($this->PurchaseCost->delete($id)) {
 			$this->Session->setFlash(__('Purchase cost deleted', true));
-			$this->redirect(array('action'=>'index'));
+			$this->redirect(array('controller'=>'stores','action' => 'view',$item['Store']['id']));
 		}
 		$this->Session->setFlash(__('Purchase cost was not deleted', true));
-		$this->redirect(array('action' => 'index'));
+		$this->redirect(array('controller'=>'stores','action' => 'view',$item['Store']['id']));
 	}
 }
 ?>

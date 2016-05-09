@@ -16,12 +16,20 @@
                 
 		<table border="0" cellpadding="0" cellspacing="0" id="id-form">
 			<tr>
+				<th valign="top">Selling Price</th>
+				<td>
+                        <?php echo $this->Form->input('price',array('label' => false,'class'=>"inp-form")); ?>
+                        </td>
+				<td></td>
+			</tr>
+			<tr>
 				<th valign="top">Buyer Name:</th>
 				<td>
                         <?php echo $this->Form->input('buyer_name',array('label' => false,'class'=>"inp-form")); ?>
                         </td>
 				<td></td>
 			</tr>
+			
 			<tr>
 				<th valign="top">Buyer Contact No:</th>
 				<td>

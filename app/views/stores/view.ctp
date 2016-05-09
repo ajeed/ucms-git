@@ -44,8 +44,16 @@
   <tr>
     <td class="spec" scope="row">DATE PURCHASED&nbsp;</td>
     <td class="specrow"><?php echo $this->Time->format( $format = 'd-m-Y', $store['Store']['date']); ?>&nbsp;</td>
-    <td class="spec1">&nbsp;</td>
-    <td class="specrow">&nbsp;</td>
+    <?php
+      $role = $this->Session->read('Auth.User.role');
+      if($role == 9999) : 
+        $pnl = $sale['Sale']['price'] - ($store['Store']['price'] + $purchaseCostsAmt['total_sum']) ;
+        $formatedPnL = $this->Number->format($pnl,array('places'=>2,'before'=>'MYR'));
+      endif;
+     ?>
+
+    <td class="spec1"><?php echo ($role == 9999)?"PROFIT & LOSS" : ""?></td>
+    <td class="specrow"><?php echo ($role == 9999)?$formatedPnL : ""?></td>
   </tr>
   <tr>
     <td class="specalt" scope="row">DESCRIPTION&nbsp;</td>
@@ -85,10 +93,11 @@
   </tr>
 
   <tr>
-    <td width="10%" class="specalt" scope="row">NO&nbsp;</td>
-    <td width="45%" class="specalt" scope="row">ITEMS&nbsp;</td>
-    <td width="15%" class="specalt" scope="row">RECEIPT NO&nbsp;</td>
-    <td width="15%" class="specalt" scope="row">TOTAL PRICE&nbsp;</td>
+    <th width="10%" class="main" scope="row">NO&nbsp;</th>
+    <th width="45%" class="main" scope="row">ITEMS&nbsp;</th>
+    <th width="15%" class="main" scope="row">RECEIPT NO&nbsp;</th>
+    <th width="15%" class="main" scope="row">TOTAL PRICE&nbsp;</th>
+    <th width="15%" class="main" scope="row">ACTION&nbsp;</th>
   </tr>
     <?php
     $i = 0;
@@ -99,11 +108,16 @@ $amount += $cost['PurchaseCost']['amount'];
   ?>
 
   <tr>
-    <td class="spec"><?=$i?></td>
-    <td class="specrow" scope="row"><?=strtoupper($cost['Lookup']['value'])?>
+    <td class=<?php echo ($i%2 == 1)?'"spec"' : '"specalt"'?>><?=$i?></td>
+    <td class=<?php echo ($i%2 == 1)?'"specrow"' : '"alt"'?> scope="row"><?=strtoupper($cost['Lookup']['value'])?>
     <?php echo ($cost['PurchaseCost']['remarks'] == "") ? "" : "- ".$cost['PurchaseCost']['remarks'] ?></td>
-    <td class="specrow"><?=$cost['PurchaseCost']['receipt_no']?></td>
-    <td class="specrow"><?=$this->Number->format($cost['PurchaseCost']['amount'],array('places'=>2,'before'=>'MYR')); ?></td>
+    <td class=<?php echo ($i%2 == 1)?'"specrow"' : '"alt"'?>><?=$cost['PurchaseCost']['receipt_no']?></td>
+    <td class=<?php echo ($i%2 == 1)?'"specrow"' : '"alt"'?>><?=$this->Number->format($cost['PurchaseCost']['amount'],array('places'=>2,'before'=>'MYR')); ?></td>
+    <td class=<?php echo ($i%2 == 1)?'"specrow"' : '"alt"'?>>
+    <?php echo $this->Html->link(__('', true), array('controller'=>'purchaseCosts','action' => 'edit', $cost['PurchaseCost']['id']),array('class'=>'icon-1 info-tooltip')); ?>
+      <?php echo $this->Html->link(__('', true), array('controller'=>'purchaseCosts','action' => 'delete', $cost['PurchaseCost']['id']),array('class'=>'icon-2 info-tooltip'), sprintf(__('Are you sure you want to delete # %s?', true), $store['Store']['reg_no'])); ?>
+    </td>
+    </td>
   </tr>
   <?php endforeach; ?>
   <tr colspan="5" scope="col" class="main"><div align="center">
@@ -111,7 +125,7 @@ $amount += $cost['PurchaseCost']['amount'];
     <td></td>
     <td></td>
 
-    <td class="spec"><b><u><?=$this->Number->format($amount,array('places'=>2,'before'=>'MYR')); ?></u></b></td>
+    <td class=<?php echo ($i%2 == 1)?'"specalt"' : '"spec"'?>><b><u><?=$this->Number->format($amount,array('places'=>2,'before'=>'MYR')); ?></u></b></td>
   </tr>
 </tbody></table>
 
