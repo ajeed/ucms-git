@@ -1,27 +1,57 @@
-<div class="purchaseCosts form">
-<?php echo $this->Form->create('PurchaseCost');?>
-	<fieldset>
- 		<legend><?php __('Edit Purchase Cost'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('store_id');
-		echo $this->Form->input('lookup_id');
-		echo $this->Form->input('amount');
-		echo $this->Form->input('remarks');
-		echo $this->Form->input('receipt_no');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit', true));?>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="500"><!--  start step-holder -->
+		<div id="step-holder">
+		<div class="step-no">1</div>
+		<div class="step-dark-left"><a href="">Costing <?=$stores['Store']['reg_no']?></a></div>
+		<div class="clear"></div>
+		</div>
+		<?php echo $this->Form->create('PurchaseCost');?>
+	<table border="0" cellpadding="0" cellspacing="0" id="id-form">
+			<tr>
+				<th valign="top">Item:</th>
+				<td>
+                        <?php echo $this->Form->input('lookup_id',array('label' => false,'class'=>"inp-form")); ?>
+                        </td>
+				<td></td>
+			</tr>
+			<tr>
+				<th valign="top">Total Amount (RM):</th>
+				<td class="noheight">
+				<?php echo $this->Form->input('amount',array('label' => false,'class'=>"inp-form")); ?>
+				</td>
+			<tr>
+			<tr>
+				<th valign="top">Receipt No:</th>
+				<td class="noheight">
+				<?php echo $this->Form->input('receipt_no',array('label' => false,'class'=>"inp-form")); ?>
+				</td>
+			<tr>
+			
+			<tr>
+				<tr>
+				<th valign="top">Description:</th>
+				<td>
+                    <?php echo $this->Form->input('remarks',array('label' => false,'class'=>"form-textarea")); ?>
+                </td>
+				<td></td>
+			</tr>
 
-		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('PurchaseCost.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('PurchaseCost.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Purchase Costs', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Stores', true), array('controller' => 'stores', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Store', true), array('controller' => 'stores', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Lookups', true), array('controller' => 'lookups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Lookup', true), array('controller' => 'lookups', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+
+	</table>
+	</tr>
+	<tr>
+		<td valign="top" align="center" colspan="2">
+					  <?php echo $this->Form->hidden('store_id',array('value'=>$stores['Store']['id'])); ?>
+                      <?php echo $this->Form->end(array('class' => 'form-submit'));?>
+			<input type="reset" value="" class="form-reset" /></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>
+    <?php echo $html->image('shared/blank.gif',array('width'=>"695",'height'=>"1",'alt'=>"blank")) ?>
+</td>
+		<td></td>
+	</tr>
+
+</table>

@@ -157,6 +157,8 @@ class SalesController extends AppController {
 		            	),
         			),
 		        ),
+	        'order' => array(
+	        	'Sale.deliver_date ASC'),
 	        'group' => 'Sale.stores_id'
 	    	);
     	$data = $this->paginate('Sale');
