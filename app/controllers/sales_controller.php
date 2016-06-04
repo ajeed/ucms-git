@@ -118,7 +118,8 @@ class SalesController extends AppController {
 			$month = $dt->format('F');
 		}
 
-		if (empty($year)) $year = date('Y');
+		$year  = (empty($this->data['rep']['year']))?date('Y'):$this->data['rep']['year'];
+
 
 		$timestamp    = strtotime($month.$year);
 		$start_date = date('Y-m-01', $timestamp);
