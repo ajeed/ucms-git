@@ -34,7 +34,7 @@
 		<tr valign="top">
 		<td>
 		<!--  start related-act-inner -->
-	<?php echo $this->element('report/g_sale_type_monthly');?>
+	<?php //echo $this->element('report/g_sale_type_monthly');?>
 	<!-- end related-act-inner -->
 		<table cellspacing="0" cellpadding="0" border="0" width="100%" id="product-table">
 					<tbody><tr>
