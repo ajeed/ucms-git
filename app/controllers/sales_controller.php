@@ -127,7 +127,7 @@ class SalesController extends AppController {
 		// exit;
 		$this->paginate = array(
 			'recursive' => -1,
-	        'conditions' => array('Sale.deliver_date BETWEEN \''.$start_date.'\' AND DATE_ADD(\''.$start_date.'\', INTERVAL 30 DAY)'),
+	        'conditions' => array('Sale.deliver_date BETWEEN \''.$start_date.'\' AND DATE_ADD(\''.$start_date.'\', INTERVAL 1 MONTH)'),
 	        'fields' => array(
 	        	 'Stores.id',	
 	        	 'Stores.reg_no',
