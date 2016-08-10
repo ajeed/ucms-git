@@ -152,7 +152,7 @@ $(document).ready(function(){
 
 			<tr>
 				<th valign="top">Chasis No:</th>
-				<td><?php echo $this->Form->input('chasis_no',array('label' => false,'class'=>"inp-form")); ?></td>
+				<td><?php echo $this->Form->input('chassis_no',array('label' => false,'class'=>"inp-form")); ?></td>
 				<td></td>
 			</tr>
 
@@ -191,7 +191,14 @@ $(document).ready(function(){
 			
 			
 			<tr>
-			
+			<tr>
+				<th valign="top">Under Finance</th>
+				<td>
+                            <?php echo $this->Form->checkbox('under_finance',array('label' => false,'class'=>"ui-helper-hidden-accessible")); ?>
+                        </td>
+				<td><!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div--></td>
+			</tr>
 			
 			<tr>
 				<th valign="top">Description:</th>

@@ -1,4 +1,4 @@
-<div class="sales index">
+asdas<div class="sales index">
 	<h2><?php __($header);
 	?></h2>
 	<table cellpadding="0" cellspacing="0" id="product-table">

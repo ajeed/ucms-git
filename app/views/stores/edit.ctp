@@ -188,6 +188,14 @@ $(document).ready(function(){
 				</td>
 			</tr>
 			<tr>
+				<th valign="top">Under Finance</th>
+				<td>
+                            <?php echo $this->Form->checkbox('under_finance',array('label' => false,'class'=>"ui-helper-hidden-accessible")); ?>
+                        </td>
+				<td><!--div class="error-left"></div>
+			<div class="error-inner">This field is required.</div--></td>
+			</tr>
+			<tr>
 				<th valign="top">Description:</th>
 				<td>
                     <?php echo $this->Form->input('remarks',array('label' => false,'class'=>"form-textarea")); ?>

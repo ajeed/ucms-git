@@ -43,6 +43,16 @@
                         </td>
 				<td></td>
 			</tr>
+                        <tr>
+				<th valign="top">Buyer Address:</th>
+				<td>
+                        <?php echo $this->Form->input('buyer_addr_1',array('label' => false,'class'=>"inp-form")); ?>
+                        <?php echo $this->Form->input('buyer_addr_2',array('label' => false,'class'=>"inp-form")); ?>
+                        <?php echo $this->Form->input('buyer_addr_3',array('label' => false,'class'=>"inp-form")); ?>            
+                        </td>
+				<td></td>
+			</tr>
+                        
 			<tr>
 				<th valign="top">Broker Name:</th>
 				<td>
