@@ -3,7 +3,7 @@ $(document).ready(function(){
 	  $('#make-name').live('change', function() {
 	    if($(this).val().length != 0) {
 		    console.log("makeId: " + $(this).val())
-	      $.getJSON('/ucms/test/get_models_ajax',
+	      $.getJSON('/test/get_models_ajax',
 	                  {makeId: $(this).val()},
 	                  function(carModels) {
 	                    if(carModels !== null) {

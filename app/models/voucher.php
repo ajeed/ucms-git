@@ -19,5 +19,21 @@ class Voucher extends AppModel {
 			'order' => ''
 		)
 	);
+
+	public function afterSave($opt_arrays = array()){
+
+
+		//To auto save to purchase_cost if the voucher tie with store_id
+		if($this->data['Voucher']['stores_id'] != null || $this->data['Voucher']['stores_id'] != "") {
+			$PurchaseCost = ClassRegistry::init('PurchaseCost');
+			$PurchaseCost->data['store_id'] = $this->data['Voucher']['stores_id'];
+			$PurchaseCost->data['lookup_id'] = $this->data['Voucher']['lookup_id'];
+			$PurchaseCost->data['amount'] = $this->data['Voucher']['amount'];
+			$PurchaseCost->data['remarks'] = $this->data['Voucher']['issuance']. "-" .$this->data['Voucher']['remarks'];
+			$PurchaseCost->data['receipt_no'] = $this->id;
+			$PurchaseCost->save($PurchaseCost->data);
+			
+		}
+	}	
 }
 ?>
